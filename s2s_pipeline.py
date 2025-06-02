@@ -209,6 +209,7 @@ def prepare_all_args(
 
 
 def initialize_queues_and_events():
+    """Create a fresh set of queues and events for one user session."""
     return {
         "stop_event": Event(),
         "interrupt_event": Event(),
