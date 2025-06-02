@@ -11,7 +11,7 @@ from openai import OpenAI
 
 logger = logging.getLogger(__name__)
 
-class OpenAIWhisperHandler(BaseHandler):
+class OpenAITTSHandler(BaseHandler):
     """
     OpenAI Whisper / GPT-4o Transcription Handler (non-streaming chunks)
     """
