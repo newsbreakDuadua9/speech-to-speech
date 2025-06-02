@@ -2,7 +2,6 @@ nltk==3.9.1
 lightning-whisper-mlx==0.0.10
 parler_tts @ git+https://github.com/newsbreakDuadua9/parler-tts
 melotts @ git+https://github.com/andimarafioti/MeloTTS.git#egg=MeloTTS  # made a copy of MeloTTS to have compatible versions of transformers
-orpheus-speech @ git+https://github.com/canopyai/Orpheus-TTS.git@main#egg=orpheus-speech&subdirectory=orpheus_tts_pypi
 torch==2.5.1
 torchaudio==2.5.1
 xformers==0.0.29

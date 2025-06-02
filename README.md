@@ -73,6 +73,39 @@ If you want to use Melo TTS, you also need to run:
 python -m unidic download
 ```
 
+## Model Service API
+
+To support concurrent multi-user workloads the repository provides
+thread‑safe service modules for both Whisper (STT) and TTS models.
+Models are loaded once per unique configuration and shared across
+all service instances.  Each service exposes a ``submit`` method to
+enqueue work with a callback that receives the generated result.
+
+```python
+from services.stt_service import WhisperService
+
+def on_result(text: str) -> None:
+    print("transcribed:", text)
+
+stt = WhisperService(model_name="large-v3", device="cuda")
+stt.submit(audio_bytes, on_result)
+```
+
+An equivalent ``TTSService`` is available for text-to-speech models.
+
+### Multi-user Server
+
+`multi_user_server.py` exposes a simple socket server that spawns an
+independent pipeline for every connecting client.  Heavy STT and TTS
+models are shared via the model services so each session only creates
+lightweight handler threads.
+
+Run the server and connect multiple clients simultaneously:
+
+```bash
+python multi_user_server.py
+```
+
 
 ## Usage
 
